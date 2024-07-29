@@ -334,11 +334,11 @@ console.log(isCheckedImage, isCheckedVideo)
                 { filter !== "Topic" && narrativeFilter == "Narrative" ?
 
                   topicfacefilter[filter] && topicfacefilter[filter].map((name, index) => (
-                  <option key={index} value={name.value}>{name.name }    { name.number && <span className='text-blue-500'>{ - name.number}</span>}  </option>
+                  <option key={index} value={name.value}>{name.name }    { name.number && <span className='text-blue-500'>{  `{${name.number}}`}</span>}  </option>
                 ))
                 :
                 narrativefacefilter[narrativeFilter] && narrativefacefilter[narrativeFilter].map((name, index) => (
-                  <option key={index} value={name.value}>{name.name } { name.number && <span className='text-blue-500'>{ - name.number}</span>} </option>
+                  <option key={index} value={name.value}>{name.name } { name.number && <span className='text-blue-500'>{ `{${name.number}}`}</span>} </option>
                 ))
                 
                 }
@@ -349,11 +349,11 @@ console.log(isCheckedImage, isCheckedVideo)
                   filter !== "Topic" && narrativeFilter == "Narrative" ?
 
                   topicflagfilter[filter]&&  topicflagfilter[filter].map((name, index) => (
-                  <option key={index} value={name.value}>{name.name } { name.number && <span className='text-blue-500'>{ - name.number}</span>} </option>
+                  <option key={index} value={name.value}>{name.name } { name.number && <span className='text-blue-500'>{ `{${name.number}}`}</span>} </option>
                   ))
                   :
                   narrativeflagfilter[narrativeFilter] && narrativeflagfilter[narrativeFilter].map((name, index) => (
-                  <option key={index} value={name.value}>{name.name } { name.number && <span className='text-blue-500'>{ - name.number}</span>} </option>
+                  <option key={index} value={name.value}>{name.name } { name.number && <span className='text-blue-500'>{`{${name.number}}`}</span>} </option>
                   )) 
                 }
               </select>
