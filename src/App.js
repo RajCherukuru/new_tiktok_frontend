@@ -92,7 +92,7 @@ function App() {
 
               <div className='flex flex-col gap-3'>
                   <div>
-                    <Popup trigger={<button className='border-4 border-black p-3 rounded-md font-bold text-2xl '>Stances</button>} modal nested>
+                    <Popup trigger={<button className='border-4 border-black p-3 rounded-md font-bold text-2xl bg-green-600 w-48 '>Stances</button>} modal nested>
                       {close => (
                         <div className='modal'>
                           <div className='flex flex-col gap-8'>
@@ -189,7 +189,7 @@ function App() {
 
 
 
-        <div className=' w-10/12'>
+        <div className=' w-11/12'>
 
                <Routes>
 

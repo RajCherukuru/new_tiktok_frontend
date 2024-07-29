@@ -6,7 +6,7 @@ import { TikTokEmbed } from 'react-social-media-embed';
 import CountryFlag from 'react-country-flag';
 import { Videocardtwo } from '../components/videocardtwo';
 
-
+import { narrativefacefilter,narrativeflagfilter, topicfacefilter, topicflagfilter } from '../data';
 
 
 
@@ -20,20 +20,67 @@ export const Videopage = (props) => {
   const setRetweet= props.setRetweet;
   const setStance= props.setStance;
 
-  const [name, setName]= useState("NONE")
-  const [flag, setFlag]= useState("NONE");
+  const [name, setName]= useState("Faces")
+  const [flag, setFlag]= useState("flags");
 
 
-  const [isCheckedVideo, setIsCheckedVideo] = useState(false);
-  const [isCheckedImage, setIsCheckedImage] = useState(false);
+  const [isCheckedVideo, setIsCheckedVideo] = useState(true);
+  const [isCheckedImage, setIsCheckedImage] = useState(true);
 
 
 
   const[filter, setFilter]= useState("AGREEMENT");
-  const [narrativeFilter, setNarrativefilter]= useState("NONE");
+  const [narrativeFilter, setNarrativefilter]= useState("Narrative");
   const backendUrl = process.env.REACT_APP_REACT_BACKEND_API;
 
-console.log("backend url", backendUrl)
+// console.log("backend url", backendUrl)
+
+
+// const dispalyFilterNames= {
+//   "NONE" : "NONE",
+//   "mao_zedong": "Mao Zedong",
+//   "emmanuel_macron": "Emmanuel Macron",
+//   "viktor_orban": "Viktor Orbán",
+//   "lin_jian": "Lin Jian",
+//   "kim_jong": "Kim Jong-un",
+//   "vladimir_putin": "Vladimir Putin",
+//   "sergey_viktorovich": "Sergey Lavrov",
+//   "joe_biden": "Joe Biden",
+//   "dmitry_medvedev": "Dmitry Medvedev",
+//   "lloyd_austin": "Lloyd Austin",
+//   "jen_stoltenberg": "Jens Stoltenberg",
+//   "wu_qian": "Wu Qian",
+//   "melissa_biden": "Melissa Biden",
+//   "donald_trump": "Donald Trump",
+//   "justin_trudeau": "Justin Trudeau",
+//   "jens_stoltenberg": "Jens Stoltenberg",
+//   "xi_jinping": "Xi Jinping",
+//   "antony_blinken": "Antony Blinken",
+//   "jackson_hinkle": "Jackson",
+//   "charles_michel": "Charles Michel",
+//   "hunter_biden": "Hunter Biden",
+//   "jake_sullivan": "Jake Sullivan",
+//   "von_derLeyen": "Ursula von der Leyen",
+//   "volodymyr_zelenskyy": "Volodymyr Zelensky",
+//   "xi_jingping": "Xi Jinping",
+//   "Olaf Scholz": "Olaf Scholz",
+//   "sergei_shoigu": "Sergey Shoigu",
+//   "wang_yi": "Wang Yi",
+//   "john_kirby": "John Kirby",
+//   "diana_panchenko": "Diana Panchenko",
+//   "petr_pavel": "Petr Pavel",
+//   "maria_zakharova": "Maria Zakharova",
+//   "china": "China",
+//   "israel": "Israel",
+//   "ukraine": "Ukraine",
+//   "uk": "United Kingdom",
+//   "france": "France",
+//   "usa": "United States",
+//   "russia": "Russia",
+//   "eu": "European Union"
+// };
+
+// console.log(dispalyFilterNames.joe_biden)
 
 
 
@@ -42,7 +89,7 @@ console.log("backend url", backendUrl)
 
           console.log("this is the filter we are sending", filter);
           let response;
-          if(filter !== "NONE" && narrativeFilter == "NONE"){
+          if(filter !== "Topic" && narrativeFilter == "Narrative"){
            response = await fetch(`${backendUrl}/api/v1/topic?filter=${filter}&narrativeFilter=${narrativeFilter}&name=${name}&flag=${flag}&isCheckedVideo=${isCheckedVideo}&isCheckedImage=${isCheckedImage}`);
 
           }
@@ -94,10 +141,19 @@ console.log("backend url", backendUrl)
     //   const CRIME = ["NONE", "Ukraine's Unit No. 110: Horrifying Crimes Against Humanity"];
     //   const ALLIANCE = ["NONE", "NATO will Punish China"];
     //   const DIPLOMACY = ["NONE", "Diplomatic Efforts for Peace in Nizhny Novgorod"];
+
+
+
+
+
+
+
+
+
     // const NONE= ["NONE"]
 
     const nf=[
-      "NONE",
+      "Narrative",
       'Nuclear Tensions: Global Powers on the Brink',
       "Russia's Battle Against Nazism for Humanity",
       'Civilians Impacted by Ukrainian Attacks in Crimea and Sevastopol',
@@ -154,9 +210,9 @@ console.log("backend url", backendUrl)
       const handleFilterChange = async (e) => {
         const selectedFilter = e.target.value;
         setFilter(selectedFilter);
-        setNarrativefilter("NONE");
-        setName("NONE");
-        setFlag("NONE")
+        setNarrativefilter("Narrative");
+        setName("Faces");
+        setFlag("flags")
 
 
     }
@@ -164,9 +220,9 @@ console.log("backend url", backendUrl)
     const handleNarrativeChange = async (e) => {
       const selectedFilter = e.target.value;
       setNarrativefilter(selectedFilter);
-      setFilter("NONE");
-      setName("NONE");
-      setFlag("NONE")
+      setFilter("Topic");
+      setName("Faces");
+      setFlag("flags")
 
 
   }
@@ -175,11 +231,15 @@ console.log("backend url", backendUrl)
   const handleNameChange = async (e) => {
     const selectedFilter = e.target.value;
     setName(selectedFilter);
+    setFlag("flags")
+
 }
 
 const handleFlagChange = (e)=>{
   const selectedFilter = e.target.value;
     setFlag(selectedFilter);
+    setName("Faces");
+
 }
 
 console.log(isCheckedImage, isCheckedVideo)
@@ -187,7 +247,7 @@ console.log(isCheckedImage, isCheckedVideo)
       
 
     const topics = [
-      "AGREEMENT", "NONE", "AID", "ALLIANCE", "ARMED FORCES", "ATTACKS", "BASES", "CIVILIANS", 
+      "AGREEMENT", "Topic", "AID", "ALLIANCE", "ARMED FORCES", "ATTACKS", "BASES", "CIVILIANS", 
       "CONFLICT", "CORRUPTION", "COVID", "CRIME", "DEFENSE", "DEMOCRACY", "DIPLOMACY", 
       "DRONES", "ECONOMY", "ENVIRONMENT", "FAMILY", "GOVERNMENT", "HISTORY", 
       "INFRASTRUCTURE", "INTEL", "INTERNATIONAL", "JUSTICE", "LIFE", "MEDIA", 
@@ -196,69 +256,50 @@ console.log(isCheckedImage, isCheckedVideo)
       "TRUTH", "WAR", "WEAPONS", 
     ];
 
-    const flags=["NONE", "russia", "usa", "china", "france", "israel", "ukraine", "eu", ]
 
-    const names = [
-      'NONE',
-      'joe_biden',
-      'vladimir_putin',
-      'volodymyr_zelenskyy',
-      'jens_stoltenberg',
-      'lin_jian',
-      'xi_jingping',
-      'dmitry_medvedev',
-      'jackson_hinkle',
-      'antony_blinken',
-      'donald_trump',
-      'sergey_viktorovich',
-      'sergei_shoigu',
-      'olaf_scholz',
-      'wang_yi',
-      'viktor_orban',
-      'maria_zakharova',
-      'wu_qian',
-      'justin_trudeau',
-      'emmanuel_macron',
-      'jake_sullivan',
-      'diana_panchenko',
-      'melissa_biden',
-      'hunter_biden',
-      'mao_zedong',
-      'von_derLeyen',
-      'charles_michel',
-      'kim_jong',
-      'lloyd_austin',
-      'petr_pavel',
-      'john_kirby'
-    ];
+  //   const names = [
+  //     "NONE",
+  // "antony_blinken",
+  // "charles_michel",
+  // "diana_panchenko",
+  // "dmitry_medvedev",
+  // "donald_trump",
+  // "emmanuel_macron",
+  // "hunter_biden",
+  // "jackson_hinkle",
+  // "jake_sullivan",
+  // "jens_stoltenberg",
+  // "joe_biden",
+  // "john_kirby",
+  // "justin_trudeau",
+  // "kim_jong",
+  // "lin_jian",
+  // "lloyd_austin",
+  // "mao_zedong",
+  // "maria_zakharova",
+  // "melissa_biden",
+  // "petr_pavel",
+  // "sergei_shoigu",
+  // "sergey_viktorovich",
+  // "viktor_orban",
+  // "vladimir_putin",
+  // "volodymyr_zelenskyy",
+  // "von_derLeyen",
+  // "wang_yi",
+  // "wu_qian",
+  // "xi_jingping"
+      
+  //   ];
 
-    // const names = [
-    //     'NONE',
-    //   "vladimir_putin",
-    //   "lin_jian",
-    //       'justin_trudeau',
 
-    //   "jackson_hinkle",
-    //   "diana_panchenko",
-    //   "emmanuel_macron",
-    //   "kim_jong",
-    //   "joe_biden",
-    //   "maria_zakharova",
-    //   "dmitry_medvedev",
-    //   "sergey_viktorovich",
-    //   "donald_trump",
-    //   "volodymyr_zelenskyy",
-    //   "jens_stoltenberg",
-    //   "wang_yi",
-    //   "xi_jingping",
-    //   "jen_stoltenberg"
-    // ];
-    
-    
+
+    // console.log(names.sort());
     
 
 
   return (
+
+
     <div className='w-11/12 mx-auto overflow-auto bg-white'>
 
 
@@ -279,7 +320,7 @@ console.log(isCheckedImage, isCheckedVideo)
 
 
 
-                <select value={narrativeFilter} onChange={(e) => handleNarrativeChange(e)} className='bg-white text-black p-2 rounded-lg text-xl border-2 border-black'>
+                <select value={narrativeFilter} onChange={(e) => handleNarrativeChange(e)} className='bg-white text-black p-2 rounded-lg text-xl border-2 border-black w-44'>
 
               { nf.map((d, index)=>(
                   <option key={index} value={d}>{d}</option>
@@ -288,26 +329,33 @@ console.log(isCheckedImage, isCheckedVideo)
               </select> 
 
 
+              
               <select value={name} onChange={(e) => handleNameChange(e)} className='bg-white text-black p-2 rounded-lg text-xl border-2 border-black'>
-                {names.map((name, index) => (
-                  <option key={index} value={name}>{name}</option>
-                ))}
+                { filter !== "Topic" && narrativeFilter == "Narrative" ?
+
+                  topicfacefilter[filter] && topicfacefilter[filter].map((name, index) => (
+                  <option key={index} value={name.value}>{name.name }    { name.number && <span className='text-blue-500'>{ - name.number}</span>}  </option>
+                ))
+                :
+                narrativefacefilter[narrativeFilter] && narrativefacefilter[narrativeFilter].map((name, index) => (
+                  <option key={index} value={name.value}>{name.name } { name.number && <span className='text-blue-500'>{ - name.number}</span>} </option>
+                ))
+                
+                }
               </select>
-            </div>
 
+              <select value={flag} onChange={(e) => handleFlagChange(e)} className='bg-white text-black p-2 rounded-lg text-xl border-2 border-black'>
+                {
+                  filter !== "Topic" && narrativeFilter == "Narrative" ?
 
-
-
-
-
-
-
-      <div className='flex flex-row gap-4'>
-
-      <select value={flag} onChange={(e) => handleFlagChange(e)} className='bg-white text-black p-2 rounded-lg text-xl border-2 border-black'>
-                {flags.map((name, index) => (
-                  <option key={index} value={name}>{name}</option>
-                ))}
+                  topicflagfilter[filter]&&  topicflagfilter[filter].map((name, index) => (
+                  <option key={index} value={name.value}>{name.name } { name.number && <span className='text-blue-500'>{ - name.number}</span>} </option>
+                  ))
+                  :
+                  narrativeflagfilter[narrativeFilter] && narrativeflagfilter[narrativeFilter].map((name, index) => (
+                  <option key={index} value={name.value}>{name.name } { name.number && <span className='text-blue-500'>{ - name.number}</span>} </option>
+                  )) 
+                }
               </select>
 
 
@@ -329,6 +377,20 @@ console.log(isCheckedImage, isCheckedVideo)
             Images
           </label>
       </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+      <div className='flex flex-row gap-4'>
+
+      
 
       
 
