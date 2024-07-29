@@ -144,7 +144,7 @@ export const Videocard = (props) => {
                       ))}
                   </div>
 
-                  <div className='flex flex-row flex-wrap gap-2'>
+                  {/* <div className='flex flex-row flex-wrap gap-2'>
                     <span className='font-bold uppercase text-2xl'>Faces: </span>
                     {attached_media.length > 0 && attached_media[0].detected_faces &&
                       attached_media[0].detected_faces.map((single, index) => (
@@ -158,7 +158,7 @@ export const Videocard = (props) => {
                       attached_media[0].detected_flags.map((single, index) => (
                         <div key={index}>{single.attr_val}</div>
                       ))}
-                  </div> 
+                  </div>  */}
                   <div>
                     <button onClick={() => close()}>
                       Close

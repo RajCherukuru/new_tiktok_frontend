@@ -216,7 +216,7 @@ export const Videocardtwo = (props) => {
                   : <></>}
               </div>
 
-              <div className='flex flex-row gap-2'>
+              {/* <div className='flex flex-row gap-2'>
                 <span className='font-bold uppercase text-2xl'>Faces: </span>
                 {attached_media && attached_media.attr_val.detected_faces.length > 0
                   ? attached_media.attr_val.detected_faces.map((single, index) => (
@@ -232,7 +232,7 @@ export const Videocardtwo = (props) => {
                       <div key={index}>{single.attr_val}</div>
                     ))
                   : <></>}
-              </div>
+              </div> */}
 
               <div>
                 <button onClick={() => close()}>

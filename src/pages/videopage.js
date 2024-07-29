@@ -58,9 +58,9 @@ console.log("backend url", backendUrl)
           // console.log("this is how the body looks like")
           // console.log(videoInfo); 
           setObjects(tweets);
-          if(stance.length>0){
+          
             setStance(stance[0]);
-          }
+          
           setReply(reply);
           setLike(likes);
           setRetweet(retweets);

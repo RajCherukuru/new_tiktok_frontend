@@ -28,7 +28,7 @@ function App() {
   const [stance, setStance]= useState({});
   let pos;
   let neg;
-  if (stance.length >0){
+  if (stance){
     pos=stance.imagepos
     neg=stance.imageneg
   }
@@ -92,7 +92,7 @@ function App() {
 
               <div className='flex flex-col gap-3'>
                   <div>
-                    <Popup trigger={<button>Stances</button>} modal nested>
+                    <Popup trigger={<button className='border-4 border-black p-3 rounded-md font-bold text-2xl '>Stances</button>} modal nested>
                       {close => (
                         <div className='modal'>
                           <div className='flex flex-col gap-8'>
