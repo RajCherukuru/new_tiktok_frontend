@@ -26,9 +26,14 @@ function App() {
   const [like, setLike]= useState(0);
 
   const [stance, setStance]= useState({});
+  let pos;
+  let neg;
+  if (stance.length >0){
+    pos=stance.imagepos
+    neg=stance.imageneg
+  }
 
-
-console.log("this is stance wehave", stance.imagepos);
+// console.log("this is stance wehave", stance.imagepos);
 
   return (
 
@@ -94,13 +99,13 @@ console.log("this is stance wehave", stance.imagepos);
 
                             <div className='flex flex-col gap-4'>
                             <div>Postive Stance</div>
-                            <img width={600} height={600} src={`https://1225507153-tiktok.s3.amazonaws.com/media-russia%26china/${stance.imagepos}`} alt="Positive Narrative" />
+                            <img width={600} height={600} src={`https://1225507153-tiktok.s3.amazonaws.com/media-russia%26china/${pos}`} alt="Positive Narrative" />
                             </div>
 
 
                             <div className='flex flex-col gap-4'>
                             <div>Negative Stance</div>
-                            <img width={600} height={600} src={`https://1225507153-tiktok.s3.amazonaws.com/media-russia%26china/${stance.imageneg}`}  alt="Negative Narrative" />
+                            <img width={600} height={600} src={`https://1225507153-tiktok.s3.amazonaws.com/media-russia%26china/${neg}`}  alt="Negative Narrative" />
                             </div>
                           </div>
                           <div>
