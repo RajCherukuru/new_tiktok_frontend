@@ -4,6 +4,9 @@ import countryCodeLookup from 'country-code-lookup';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { IoShareOutline } from "react-icons/io5";
+import { FaRegHeart } from "react-icons/fa";
+import { FaRegComment } from "react-icons/fa";
+import { BiRepost } from "react-icons/bi";
 
 
 import ReactPlayer from 'react-player';
@@ -194,10 +197,20 @@ export const Videocardtwo = (props) => {
 
 
             <div className='flex flex-row justify-around'>
+
             <a href={url} target='_blank' rel='noopener noreferrer' className='pointer hover:underline text-blue-800'>Tweet Link</a>
-            <div>Replies : {reply_count}</div>
-                <div>Likes: {like_count}</div>
-                <div>Retweets :{retweet_count}</div>
+            <div className='flex flex-row gap-1 items-center font-bold'>   <FaRegComment />
+             <div>{reply_count}</div></div>
+
+             
+
+             <div className='flex flex-row gap-1 items-center font-bold'>   <FaRegHeart />
+             <div>{like_count}</div></div>
+
+
+             <div className='flex flex-row gap-1 items-center font-bold'>   <BiRepost size={20} />
+             <div>{retweet_count}</div></div>
+
               </div>
 
               <div className='flex flex-col gap-2'>

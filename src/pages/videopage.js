@@ -355,18 +355,18 @@ console.log(isCheckedImage, isCheckedVideo)
               <select value={name} onChange={(e) => handleNameChange(e)} className='bg-white text-black p-2 rounded-lg text-xl border-2 border-black'>
                 { filter !== "Topic" && narrativeFilter == "Narrative" ?
 
-                  topicfacefilter[filter] && topicfacefilter[filter].map((name, index) => (
+                  topicfacefilter[filter] ? topicfacefilter[filter].map((name, index) => (
                     <option key={index} value={name.value}> 
                       {name.name === "Faces" ? "FACES" : name.name} 
-                      {name.number && <span className='text-blue-500'>{`{${name.number}}`}</span>}
+                      {name.number && <span className='text-blue-500'>{`  {${name.number}}`}</span>}
                     </option>
-                ))
+                )) : <option value="Faces">FACES</option>
                 :
-                narrativefacefilter[narrativeFilter] && narrativefacefilter[narrativeFilter].map((name, index) => (
+                narrativefacefilter[narrativeFilter] ? narrativefacefilter[narrativeFilter].map((name, index) => (
                   <option key={index} value={name.value}> 
                       {name.name === "Faces" ? "FACES" : name.name} 
-                      {name.number && <span className='text-blue-500'>{`{${name.number}}`}</span>}
-                    </option>                ))
+                      {name.number && <span className='text-blue-500'>{`  {${name.number}}`}</span>}
+                    </option>                )) : <option value="Faces">FACES</option>
                 
                 }
               </select>
@@ -375,17 +375,17 @@ console.log(isCheckedImage, isCheckedVideo)
                 {
                   filter !== "Topic" && narrativeFilter == "Narrative" ?
 
-                  topicflagfilter[filter]&&  topicflagfilter[filter].map((name, index) => (
+                  topicflagfilter[filter] ?  topicflagfilter[filter].map((name, index) => (
                     <option key={index} value={name.value}> 
                       {name.name === "Flags" ? "FLAGS" : name.name} 
-                      {name.number && <span className='text-blue-500'>{`{${name.number}}`}</span>}
-                    </option>                  ))
+                      {name.number && <span className='text-blue-500'>{`  {${name.number}}`}</span>}
+                    </option>                  )) : <option value="flags">FLAGS</option>
                   :
-                  narrativeflagfilter[narrativeFilter] && narrativeflagfilter[narrativeFilter].map((name, index) => (
+                  narrativeflagfilter[narrativeFilter] ? narrativeflagfilter[narrativeFilter].map((name, index) => (
                     <option key={index} value={name.value}> 
                       {name.name === "Flags" ? "FLAGS" : name.name} 
-                      {name.number && <span className='text-blue-500'>{`{${name.number}}`}</span>}
-                    </option>                  )) 
+                      {name.number && <span className='text-blue-500'>{`  {${name.number}}`}</span>}
+                    </option>                  ))  : <option value="flags">FLAGS</option>
                 }
               </select>
 
