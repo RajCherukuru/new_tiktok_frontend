@@ -9,6 +9,7 @@ import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
+import CountryFlag from 'react-country-flag';
 
 
 function App() {
@@ -33,18 +34,31 @@ function App() {
     neg=stance.imageneg
   }
 
-// console.log("this is stance wehave", stance.imagepos);
+  
 
   return (
 
 
-    <div className=" h-[100vh] bg-white text-black overflow-auto">
+    <div className=" h-[100vh] bg-white text-black  ">
 
 
       <div className='header border-b p-4 flex justify-between mb-3 '>
 
           
           <img className='rounded-full' src={image} width={150} height={80}/>
+
+          <div className='text-2xl font-bold'>Russia / China Camp - Media Index</div>
+          
+
+          {/* <div className='flex flex-row items-center justify-center'>
+
+            <CountryFlag style={{ width: '50px', height:'50px' }}  countryCode="RU" svg />
+
+                  <CountryFlag style={{ width: '100px', height:'30px' }}  countryCode="CN" svg />
+                
+          
+
+          </div> */}
           
 
           {/* <input type='text' placeholder='Search' className='w-4/12  bg-gray-900 rounded-full'>
@@ -65,13 +79,13 @@ function App() {
 
 
 
-      <div className='h-[90%] flex gap-2'>
+      <div className='h-[90%] flex gap-2 sticky top-0 z-20'>
 
 
 
 
 
-          <div className='  w-2/12 flex flex-col gap-5'>
+          <div className='  w-2/12 flex flex-col gap-5  '>
 
 
 
@@ -88,11 +102,11 @@ function App() {
               </nav> */}
 
 
-              <div className='text-2xl font-bold p-4 flex flex-col gap-8'>
+              <div className='text-2xl font-bold p-4 flex flex-col gap-8 sticky top-2 z-10   '>
 
               <div className='flex flex-col gap-3'>
                   <div>
-                    <Popup trigger={<button className='border-4 border-black p-3 rounded-md font-bold text-2xl bg-green-600 w-48 '>Stances</button>} modal nested>
+                    <Popup trigger={<button className='border-4 border-black border-2 p-6 rounded-md font-bold text-2xl bg-green-600 w-48 '>Stances</button>} modal nested>
                       {close => (
                         <div className='modal'>
                           <div className='flex flex-col gap-8'>
@@ -129,7 +143,7 @@ function App() {
 
 
                     <div>
-                    REPLY
+                    REPLIES
                     </div>
                     <div>
                     {reply.toLocaleString('en-US')}

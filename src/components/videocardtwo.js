@@ -3,6 +3,7 @@ import CountryFlag from 'react-country-flag';
 import countryCodeLookup from 'country-code-lookup';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import { IoShareOutline } from "react-icons/io5";
 
 
 import ReactPlayer from 'react-player';
@@ -12,7 +13,7 @@ export const Videocardtwo = (props) => {
   const { obj, name, isCheckedImage, isCheckedVideo } = props;
 
   // Access properties of the obj object
-  const { tweet_id, content, url, attached_media } = obj;
+  const { tweet_id, content, url, attached_media, reply_count, retweet_count, like_count } = obj;
 
   const [nameVisibility, setNameVisibility] = useState(true);
   const [ext, setExt] = useState('');
@@ -186,9 +187,19 @@ export const Videocardtwo = (props) => {
       </div>
 
       <div>
-        <Popup trigger={<button> ... </button>} modal nested>
+        <Popup trigger={<button> <IoShareOutline />
+          </button>} modal nested>
           {close => (
             <div className='modal'>
+
+
+            <div className='flex flex-row justify-around'>
+            <a href={url} target='_blank' rel='noopener noreferrer' className='pointer hover:underline text-blue-800'>Tweet Link</a>
+            <div>Replies : {reply_count}</div>
+                <div>Likes: {like_count}</div>
+                <div>Retweets :{retweet_count}</div>
+              </div>
+
               <div className='flex flex-col gap-2'>
                 <span className='font-bold uppercase text-2xl'>Summary: </span>
                 {attached_media && attached_media.attr_val.generated_description.length > 0
@@ -198,23 +209,31 @@ export const Videocardtwo = (props) => {
                   : <></>}
               </div>
 
-              <div className='flex flex-col gap-2'>
-                <span className='font-bold uppercase text-2xl'>Transcription: </span>
-                {attached_media && attached_media.attr_val.captured_transcription.length > 0
-                  ? attached_media.attr_val.captured_transcription.map((single, index) => (
-                      <div key={index}>{single.attr_val}</div>
-                    ))
-                  : <></>}
-              </div>
+              
 
-              <div className='flex flex-col gap-2'>
-                <span className='font-bold uppercase text-2xl'>OCR: </span>
-                {attached_media && attached_media.attr_val.captured_ocr.length > 0
-                  ? attached_media.attr_val.captured_ocr.map((single, index) => (
-                      <div key={index}>{single.attr_val}</div>
-                    ))
-                  : <></>}
-              </div>
+              <div className='flex flex-col gap-2 '>
+                  {attached_media && attached_media.attr_val.captured_transcription.length > 0 ? (
+                    <>
+                      <span className='font-bold uppercase text-2xl'>Transcription: </span>
+                      {attached_media.attr_val.captured_transcription.map((single, index) => (
+                        <div className="max-h-36 overflow-hidden" key={index}>{single.attr_val}</div>
+                      ))}
+                    </>
+                  ) : null}
+                </div>
+
+
+                <div className='flex flex-col gap-2'>
+                  {attached_media && attached_media.attr_val.captured_ocr.length > 0 ? (
+                    <>
+                      <span className='font-bold uppercase text-2xl'>OCR: </span>
+                      {attached_media.attr_val.captured_ocr.map((single, index) => (
+                        <div key={index}>{single.attr_val}</div>
+                      ))}
+                    </>
+                  ) : null}
+                </div>
+
 
               {/* <div className='flex flex-row gap-2'>
                 <span className='font-bold uppercase text-2xl'>Faces: </span>
@@ -236,7 +255,6 @@ export const Videocardtwo = (props) => {
 
               <div>
                 <button onClick={() => close()}>
-                  Close
                 </button>
               </div>
             </div>

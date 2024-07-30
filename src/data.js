@@ -2,7 +2,7 @@
 
 export const topicfacefilter={
     "Topic":[{
-      "name": "",
+      "name": "FACES",
       "number": "",
       "value": ""
     },],
@@ -1464,11 +1464,16 @@ export const topicfacefilter={
 
 
 
+
+
+
+
+
   export const narrativefacefilter={
 
   "Narrative":[
     {
-      "name": "",
+      "name": "FACES",
       "number": "",
       "value": ""
     },
@@ -1713,7 +1718,7 @@ export const narrativeflagfilter={
 
 "Narrative":[
     {
-      "name": "",
+      "name": "FLAGS",
       "number": "",
       "value": ""
     },
@@ -1859,7 +1864,7 @@ export const narrativeflagfilter={
 export const topicflagfilter={
 
     "Topic":[{
-            "name": "",
+            "name": "FLAGS",
             "number": "",
             "value": ""
           },],

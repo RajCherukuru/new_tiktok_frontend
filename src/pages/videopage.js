@@ -29,7 +29,7 @@ export const Videopage = (props) => {
 
 
 
-  const[filter, setFilter]= useState("AGREEMENT");
+  const[filter, setFilter]= useState("Topic");
   const [narrativeFilter, setNarrativefilter]= useState("Narrative");
   const backendUrl = process.env.REACT_APP_REACT_BACKEND_API;
 
@@ -247,13 +247,36 @@ console.log(isCheckedImage, isCheckedVideo)
       
 
     const topics = [
-      "AGREEMENT", "Topic", "AID", "ALLIANCE", "ARMED FORCES", "ATTACKS", "BASES", "CIVILIANS", 
-      "CONFLICT", "CORRUPTION", "COVID", "CRIME", "DEFENSE", "DEMOCRACY", "DIPLOMACY", 
-      "DRONES", "ECONOMY", "ENVIRONMENT", "FAMILY", "GOVERNMENT", "HISTORY", 
-      "INFRASTRUCTURE", "INTEL", "INTERNATIONAL", "JUSTICE", "LIFE", "MEDIA", 
-      "MERCENARIES", "MISSILES", "NATION", "NAZISM", "NUCLEAR", "PEACE", "RELIGION", 
-      "RESOURCES", "ROCKETS", "SAFETY", "SANCTIONS", "SENTIMENT", "SPACE", "TERROR", 
-      "TRUTH", "WAR", "WEAPONS", 
+      "Topic", "NUCLEAR",
+  "MISSILES",
+  "MERCENARIES",
+  "AID",
+  "WAR",
+  "SANCTIONS",
+  "ATTACKS",
+  "TERROR",
+  "CONFLICT",
+  "CRIME",
+  "CORRUPTION",
+  "COVID",
+  "NAZISM",
+  "GOVERNMENT",
+  "ECONOMY",
+  "SPACE",
+  "ROCKETS",
+  "DRONES",
+  "INTEL",
+  "BASES",
+  "ARMED FORCES",
+  "WEAPONS",
+  "DEFENSE",
+  "RESOURCES",
+  "INFRASTRUCTURE",
+  "HISTORY",
+  "CIVILIANS",
+  "DIPLOMACY",
+  "AGREEMENT",
+  "ALLIANCE"
     ];
 
 
@@ -300,19 +323,18 @@ console.log(isCheckedImage, isCheckedVideo)
   return (
 
 
-    <div className='w-11/12 mx-auto overflow-auto bg-white'>
+    <div className='w-11/12 mx-auto  bg-white'>
 
 
-        <div className='flex flex-col gap-4 mb-4 font-semibold '>
 
 
           
-            <div className='flex flex-row gap-3'>
+            <div className=' flex flex-row gap-3 mb-3 font-semibold bg-white p-5 sticky top-2 z-10 '>
 
 
-              <select value={filter} onChange={(e) => handleFilterChange(e)} className='bg-white text-black p-2 rounded-lg text-xl border-2 border-black'>
+              <select value={filter} onChange={(e) => handleFilterChange(e)} className=' bg-white text-black p-2 rounded-lg text-xl border-2 border-black '>
                 {topics.map((topic, index) => (
-                  <option key={index} value={topic}>{topic}</option>
+                  <option key={index} value={topic}>{ topic == "Topic" ? "TOPICS" : topic }</option>
                 ))}
               </select>
 
@@ -323,7 +345,7 @@ console.log(isCheckedImage, isCheckedVideo)
                 <select value={narrativeFilter} onChange={(e) => handleNarrativeChange(e)} className='bg-white text-black p-2 rounded-lg text-xl border-2 border-black w-44'>
 
               { nf.map((d, index)=>(
-                  <option key={index} value={d}>{d}</option>
+                  <option key={index} value={d}>{d == "Narrative" ? "Top Narratives" : d}</option>
                 ))}
 
               </select> 
@@ -334,12 +356,17 @@ console.log(isCheckedImage, isCheckedVideo)
                 { filter !== "Topic" && narrativeFilter == "Narrative" ?
 
                   topicfacefilter[filter] && topicfacefilter[filter].map((name, index) => (
-                  <option key={index} value={name.value}>{name.name }    { name.number && <span className='text-blue-500'>{  `{${name.number}}`}</span>}  </option>
+                    <option key={index} value={name.value}> 
+                      {name.name === "Faces" ? "FACES" : name.name} 
+                      {name.number && <span className='text-blue-500'>{`{${name.number}}`}</span>}
+                    </option>
                 ))
                 :
                 narrativefacefilter[narrativeFilter] && narrativefacefilter[narrativeFilter].map((name, index) => (
-                  <option key={index} value={name.value}>{name.name } { name.number && <span className='text-blue-500'>{ `{${name.number}}`}</span>} </option>
-                ))
+                  <option key={index} value={name.value}> 
+                      {name.name === "Faces" ? "FACES" : name.name} 
+                      {name.number && <span className='text-blue-500'>{`{${name.number}}`}</span>}
+                    </option>                ))
                 
                 }
               </select>
@@ -349,37 +376,41 @@ console.log(isCheckedImage, isCheckedVideo)
                   filter !== "Topic" && narrativeFilter == "Narrative" ?
 
                   topicflagfilter[filter]&&  topicflagfilter[filter].map((name, index) => (
-                  <option key={index} value={name.value}>{name.name } { name.number && <span className='text-blue-500'>{ `{${name.number}}`}</span>} </option>
-                  ))
+                    <option key={index} value={name.value}> 
+                      {name.name === "Flags" ? "FLAGS" : name.name} 
+                      {name.number && <span className='text-blue-500'>{`{${name.number}}`}</span>}
+                    </option>                  ))
                   :
                   narrativeflagfilter[narrativeFilter] && narrativeflagfilter[narrativeFilter].map((name, index) => (
-                  <option key={index} value={name.value}>{name.name } { name.number && <span className='text-blue-500'>{`{${name.number}}`}</span>} </option>
-                  )) 
+                    <option key={index} value={name.value}> 
+                      {name.name === "Flags" ? "FLAGS" : name.name} 
+                      {name.number && <span className='text-blue-500'>{`{${name.number}}`}</span>}
+                    </option>                  )) 
                 }
               </select>
 
 
-      <label>
-            <input
-              type="checkbox"
-              checked={isCheckedVideo}
-              onChange={()=>setIsCheckedVideo((prevState) => !prevState)}
-            />
-            Videos
-          </label>
+                <label>
+                      <input
+                        type="checkbox"
+                        checked={isCheckedVideo}
+                        onChange={()=>setIsCheckedVideo((prevState) => !prevState)}
+                      />
+                      Videos
+                    </label>
 
-          <label>
-            <input
-              type="checkbox"
-              checked={isCheckedImage}
-              onChange={()=> setIsCheckedImage((prevState) => !prevState)}
-            />
-            Images
-          </label>
-      </div>
-
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={isCheckedImage}
+                        onChange={()=> setIsCheckedImage((prevState) => !prevState)}
+                      />
+                      Images
+                    </label>
 
             </div>
+
+
 
 
 
